@@ -14,19 +14,16 @@ module.exports = {
       orderId: {
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true,
         type: Sequelize.INTEGER,
       },
       price: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      sellerId: {
+      seller: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-        field: 'sellerId',
+        field: 'seller',
         references: {
           model: 'SELLERS',
           key: 'id',
