@@ -1,5 +1,6 @@
 import express from 'express';
 import errorHandler from './middlewares/errorHandler';
+import ordersRouter from './routes/ordersRoute';
 
 export class App {
   public app: express.Express;
@@ -7,6 +8,8 @@ export class App {
   constructor() {
     this.app = express();
     this.config();
+    this.errorHandler();
+    this.routes();
   }
 
   private config(): void {
@@ -22,6 +25,7 @@ export class App {
   }
   
   private routes(): void {
+    this.app.use('/', ordersRouter);
 
   }
 
@@ -31,7 +35,7 @@ export class App {
   }
 
   public start(PORT: string | number): void {
-    this.app.listen(PORT, () => console.log(`ouvindo a porta ${PORT || 3001}`));
+    this.app.listen(PORT, () => console.log(`listening to port ${PORT || 3001}`));
   }
-  
+
 }
