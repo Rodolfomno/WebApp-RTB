@@ -1,6 +1,7 @@
 import express from 'express';
 import errorHandler from './middlewares/errorHandler';
 import ordersRouter from './routes/ordersRoute';
+import sellersRouter from './routes/sellersRoute';
 
 export class App {
   public app: express.Express;
@@ -26,6 +27,8 @@ export class App {
   
   private routes(): void {
     this.app.use('/', ordersRouter);
+    this.app.use('/', sellersRouter);
+
 
   }
 
