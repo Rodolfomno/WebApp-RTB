@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import ordersController from '../controllers/ordersController';
+import OrdersController from '../controllers/ordersController';
 const ordersRouter = Router();
 
-const taskController = new ordersController();
+const ordersController = new OrdersController();
 
-ordersRouter.get('/get-all-orders', taskController.getAllOrders)
+ordersRouter.get('/get-all-orders', ordersController.getAllOrders)
 
 export default ordersRouter;
