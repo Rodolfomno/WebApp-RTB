@@ -10,4 +10,11 @@ export default class ordersController {
         return res.status(201).json(allOrders);
     }
 
+    public getFilterOptions = (_req: Request, res: Response, _next: NextFunction) => {
+
+        const filterOptions = orderService.getFilterOptions();
+
+        return res.status(201).json(filterOptions);
+    }
+
 }
