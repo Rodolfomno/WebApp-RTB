@@ -1,5 +1,17 @@
 {
   "files": [],
+  "compilerOptions": {
+    "target": "es2019",                                
+    "module": "commonjs",                           
+    "sourceMap": true,                           
+    "outDir": "./src",
+    "strict": true,                                 
+    "esModuleInterop": true,                        
+    "skipLibCheck": true,                           
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
