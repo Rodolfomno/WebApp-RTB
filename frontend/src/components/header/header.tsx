@@ -6,7 +6,7 @@ export default function Header () {
     return (
         <HeaderComponent>
             <LogoComponent>
-                RTB <span>WebApp</span>
+                RTB <span style={{ color: 'white' }}>WebApp</span>
             </LogoComponent>
             <ButtonsComponent>
                 <Button title="Orders" />
