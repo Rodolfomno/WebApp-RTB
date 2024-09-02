@@ -1,88 +1,59 @@
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableFooter,
-    TableHead,
-    TableHeader,
-    TableRow,
-  } from "@/components/ui/table"
-  
-  const invoices = [
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-  ]
-  
-  export function TableDemo() {
+import DataTable from "react-data-table-component"
+import { TableContainer } from "./style"
+
+export type DataType = {
+  price: number,
+  orderId: number,
+  seller: number,
+  country: string,
+  product: string,
+  sellerName: string,
+}
+
+function Title ({ title }: { title: string }) {
     return (
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
+        <p style={{ fontWeight: 'bold', fontSize: '16px' }}>{ title }</p>
     )
-  }
-  
+}
+
+export function Table ({ data }: { data: DataType[] }) {
+    const columns = [
+        {
+            name: <Title title="Orders" />,
+            selector: (row: { orderId: number }) => row.orderId,
+            sortable: true,
+        },
+        {
+            name: <Title title="Product" />,
+            selector: (row : { product: string }) => row.product,
+            sortable: true,
+        },
+        {
+            name: <Title title="Price" />,
+            selector: (row: { price: number }) => row.price,
+            sortable: true,
+        },
+        {
+            name: <Title title="Seller" />,
+            selector: (row: { sellerName: string }) => row.sellerName,
+            sortable: true,
+
+        },
+        {
+            name: <Title title="Country" />,
+            selector: (row: { country: string }) => row.country,
+            sortable: true,
+
+        }
+    ]
+
+    return (
+        <TableContainer>
+            <DataTable
+            columns={columns}
+            data={data} 
+            pagination
+            />   
+        </TableContainer>
+    )
+}
