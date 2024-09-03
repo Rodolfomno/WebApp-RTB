@@ -15,7 +15,18 @@ const customStyles = {
 
 }
 
-export function Filter ({ options, title }: { options: { value: string, label: string }[], title: string}) {
+export type typeOptions = {
+    value: string, label: string
+}
+
+type Params = {
+    options: { value: string, label: string }[],
+    title: string,
+    setFilter: any
+}
+
+export function Filter ({ options, title, setFilter }: Params) {
+    
 
     return (
         <FilterContainer>
@@ -24,7 +35,7 @@ export function Filter ({ options, title }: { options: { value: string, label: s
               options={options} 
               styles={customStyles}
               isMulti
-              onChange={(item) => console.log(item)}
+              onChange={(item) => setFilter(item)}
             />
         </FilterContainer>
     )

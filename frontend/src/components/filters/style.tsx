@@ -14,7 +14,7 @@ export const FilterContainer = styled.div`
 `
 
 export const FiltersContainer = styled.div`
-width: 550px;
+width: 530px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
