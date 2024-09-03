@@ -1,5 +1,6 @@
 import DataTable from "react-data-table-component"
 import { TableContainer } from "./style"
+import { formatToCurrency } from "../../helpers/helpers"
 
 export type DataType = {
   price: number,
@@ -30,7 +31,7 @@ export function Table ({ data }: { data: DataType[] }) {
         },
         {
             name: <Title title="Price" />,
-            selector: (row: { price: number }) => row.price,
+            selector: (row: { price: number }) => formatToCurrency(row.price),
             sortable: true,
         },
         {
