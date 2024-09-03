@@ -1,7 +1,6 @@
 {
   "scripts": {
     "start": "ts-node ./src/server.ts",
-    "predev": "npm run db:reset",
     "dev": "ts-node ./src/server.ts"
   },
   "dependencies": {

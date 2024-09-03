@@ -16,8 +16,7 @@ export function HomePage () {
     const [filteredCountries, setFilteredCountries] = useState<{ value: string, label: string }[]>();
     const [filteredSellers, setFilteredSellers] = useState<{ value: string, label: string }[]>();
 
-    useEffect(() => {
-
+    function getData(){
       fetch('http://localhost:3001/get-all-orders')
         .then(response => response.json())
         .then((json) => {
@@ -39,7 +38,10 @@ export function HomePage () {
         .then(response => response.json())
         .then((json) => setTopSellers(json))
         .catch(error => console.error(error));
+    }
 
+    useEffect(() => {
+      getData();
     }, []);
 
   
@@ -77,20 +79,21 @@ export function HomePage () {
             <FilterRow>
                 <FiltersContainer>
 
+                    { countriesOptions && (
                     <ButtonsFilter>
-                        <FilterButton onClick={() => handleFilter()}>
-                          Apply
-                        </FilterButton>
-                        <ClearButton onClick={() => clearFilters()}>
-                          Cancel
-                        </ClearButton>
+                      <FilterButton onClick={() => handleFilter()}>
+                        Apply
+                      </FilterButton>
+                      <ClearButton onClick={() => clearFilters()}>
+                        Cancel
+                      </ClearButton>
                     </ButtonsFilter>
+                    ) }
                     { countriesOptions && <Filter title="Countries" options={countriesOptions} setFilter={setFilteredCountries} />}
                     { sellersOptions && <Filter title="Sellers" options={sellersOptions} setFilter={setFilteredSellers} />}
                 </FiltersContainer>
             </FilterRow>
             <Table  data={filteredData}/>
-
           </HomeContainer>
         </>
     );

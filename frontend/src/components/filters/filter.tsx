@@ -2,6 +2,7 @@ import Select from "react-select"
 import { FilterContainer } from "./style"
 
 const customStyles = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     control: (provided: any) => ({
         ...provided,
         width: '220px',
@@ -9,6 +10,7 @@ const customStyles = {
         boxShadow: 'none',
         textAlign: 'left'
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     option: (provided: any) => ({
         ...provided,
     })
@@ -22,6 +24,7 @@ export type typeOptions = {
 type Params = {
     options: { value: string, label: string }[],
     title: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setFilter: any
 }
 
