@@ -1,15 +1,15 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HomePage } from "./pages/homePage"
+import { InfoPage } from "./pages/InfoPage"
 
-import Header from "./components/header/header"
-
-// import viteLogo from '/vite.svg'
 function App() {
-
   return (
-    <div>
-      <Header />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index path="/" element={<HomePage />} />
+        <Route path="/devInfo" element={<InfoPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
