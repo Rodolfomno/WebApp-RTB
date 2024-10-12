@@ -12,7 +12,7 @@ export function Card ({ data, place }: { data: { id: number, name: string, total
                 <div style={{ color: '#383838', fontWeight: 'bold' }}>
                     { data[place -1].name}
                 </div>
-                <div style={{ textAlign: 'end', color: '#383838', fontWeight: 'bold' }}>
+                <div style={{ textAlign: 'end', color: '#323233', fontWeight: 'bold' }}>
                     { `Total: ${formatToCurrency(data[place -1].totalSales)}` }
                 </div>
             </SellerContainer>
